@@ -11,3 +11,19 @@
   background-color: #40405C !important;
   color: white !important;
 }
+
+.ant-menu-inline .ant-menu-item {
+  width: 100%;
+}
+.ant-menu-item-selected {
+  color: inherit;
+  background-color: inherit;
+}
+
+menu-item::after {
+  border-right: none !important;
+}
+
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background-color: inherit;
+}

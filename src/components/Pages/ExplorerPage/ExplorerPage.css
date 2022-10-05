@@ -5,22 +5,6 @@
   padding: 2px 5px;
 }
 
-
-.panorama {
-  display: flex;
-  flex-grow: 1;
-  width: 100%;
-  min-height: 100vh;
-
-}
-.pnlm-about-msg {
-  display: none !important;
-}
-
-.pnlm-load-box {
-  display: none !important;
-}
-
 .ant-form-item-label > label {
   color: white !important;
 }
@@ -29,6 +13,5 @@
   flex: 1;
 }
 
-.site-page-header {
-  border: 1px solid rgb(235, 237, 240);
-}
+
+

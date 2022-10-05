@@ -1,0 +1,73 @@
+
+.pnlm-about-msg {
+  display: none !important;
+}
+
+.pnlm-load-box {
+  display: none !important;
+}
+
+.viewCtrl {
+  padding: 8px 5px;
+  width: 30px;
+  text-align: center;
+  background: rgba(200, 200, 200, 0.8);
+  display: inline-block;
+  cursor: pointer;
+}
+.viewCtrl:hover {
+  background: rgba(200, 200, 200, 1);
+}
+
+#pan-up {
+  position: absolute;
+  left: 50%;
+  top: 10px;
+}
+#pan-down {
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+}
+
+#pan-left {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+}
+
+#pan-right {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+}
+.sideCtrls {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+
+.sideCtrl {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  color: white;
+  opacity: 0.7;
+  background: #000000;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+}
+
+.ctrlSvg{
+  height: 15px;
+  margin: auto;
+  background-color: white;
+  fill: white;
+}
+
+
+

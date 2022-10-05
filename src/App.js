@@ -1,5 +1,10 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 import { Layout } from 'antd';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from 'react-router-dom';
 import {
   NavBar, PagesMenu, ExplorerPage, PageNotImplemented, FullSizeBox,
 } from './components';
@@ -10,74 +15,71 @@ import './App.css';
 // TODO dynamic import
 const PAGES = [{
   key: 'dashboard',
+  route: '/dashboard',
   label: 'Dashboard',
   renderer: ({ page }) => <PageNotImplemented page={page} />,
 },
 {
   key: 'apartments',
+  route: '/apartments',
   label: 'Apartments',
   renderer: ({ page }) => <PageNotImplemented page={page} />,
 },
 {
   key: 'trades',
+  route: '/trades',
   label: 'Trades',
   renderer: ({ page }) => <PageNotImplemented page={page} />,
 },
 {
   key: 'explore',
+  route: '/explore',
   label: 'Explore',
   renderer: ({ page }) => <ExplorerPage page={page} />,
 },
 {
   key: 'plans',
+  route: '/plans',
   label: 'Plans',
   renderer: ({ page }) => <PageNotImplemented page={page} />,
 },
 {
   key: 'Reminders',
+  route: '/reminders',
   label: 'reminders',
   renderer: ({ page }) => <PageNotImplemented page={page} />,
 },
 {
   key: 'reports',
+  route: '/reports',
   label: 'Reports',
   renderer: ({ page }) => <PageNotImplemented page={page} />,
 },
 ];
 
-const App = () => {
-  const [currentPage, setCurrentPage] = useState(PAGES[0]);
-  const keyPage = currentPage.key;
-  const changeSelectedKey = useCallback(
-    (event) => {
-      const { key: pageKey } = event;
-      setCurrentPage(PAGES.find((page) => page.key === pageKey));
-    },
-    [],
-  );
-
-  const Menu = (
-    <PagesMenu
-      pages={PAGES}
-      selectedKey={keyPage}
-      changeSelectedKey={changeSelectedKey}
-    />
-  );
-  return (
+const App = () => (
+  <Router>
     <FullSizeBox flexDirection="column" height="100vh">
       <NavBar />
       <Layout style={{ height: '100%' }}>
         <Layout.Sider
           className="sidebar"
         >
-          {Menu}
+          <PagesMenu
+            pages={PAGES}
+          />
         </Layout.Sider>
         <Layout.Content className="content">
-          {currentPage.renderer({ page: currentPage })}
+          <Routes>
+            {PAGES.map((page) => (
+              <Route key={page.key} path={page.route} element={page.renderer({ page })} />
+            ))}
+          </Routes>
         </Layout.Content>
       </Layout>
     </FullSizeBox>
-  );
-};
+  </Router>
+
+);
 
 export default App;

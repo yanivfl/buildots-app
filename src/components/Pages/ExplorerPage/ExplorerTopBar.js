@@ -8,15 +8,25 @@ import { LATEST_DATE } from '../../../constants';
 
 // TODO format date
 const formatDate = (date) => date;
-
-// eslint-disable-next-line max-len
-const getDateOptions = (apartments) => {
+const LATEST_DATE_OPTION = [{ value: LATEST_DATE, label: 'Latest Date' }];
+const getDateOptions = ({
+  apartments,
+  apartmentName,
+}) => {
   // eslint-disable-next-line max-len
-  const dates = apartments.reduce((_dates, apartment) => [..._dates, ...apartment.images.map(({ date }) => date)], []);
+  const apartment = apartments.find((_apartment) => _apartment.name === apartmentName);
+  if (!apartment) {
+    return LATEST_DATE_OPTION;
+  }
+  const dates = apartment.images.map(({ date }) => date);
   const uniqueDates = [...new Set(dates)];
   const dateOptions = uniqueDates.map((date) => ({ value: date, label: formatDate(date) }));
-  return [{ value: LATEST_DATE, label: 'Latest Date' }, ...dateOptions];
+  return [...LATEST_DATE_OPTION, ...dateOptions];
 };
+
+const getApartmentOptions = ({ apartments }) => apartments.map(({ name }) => ({
+  value: name, label: name,
+}));
 
 const ExplorerSelector = ({
   label, name, options, formProps,
@@ -24,6 +34,7 @@ const ExplorerSelector = ({
   // eslint-disable-next-line react/jsx-props-no-spreading
   <Form.Item label={label} name={name} style={{ padding: '0 2px' }} {...formProps}>
     <Select
+      placeholder="Choose date"
       style={{ width: 120 }}
       options={options}
       size="small"
@@ -32,17 +43,16 @@ const ExplorerSelector = ({
 );
 
 const ExplorerTopBar = ({ form, apartments = [] }) => {
-  const apartmentNamesOptions = apartments.map(({ name }) => ({
-    value: name, label: name,
-  }));
-  const dateOptions = getDateOptions(apartments);
+  const apartmentName = form.getFieldValue('apartmentName');
+  const apartmentNamesOptions = getApartmentOptions({ apartments });
+  const dateOptions = getDateOptions({ apartments, apartmentName });
   return (
     <FullSizeBox className="explorerTopBar">
       <Form
         layout="inline"
         form={form}
         initialValues={{
-          date: LATEST_DATE,
+          // date: LATEST_DATE,
           apartmentName: apartmentNamesOptions[0]?.value,
           room: 'Living room',
           floor: 1,
