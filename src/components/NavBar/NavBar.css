@@ -1,0 +1,13 @@
+.navbar {
+  background-color: white;
+}
+
+.buildDotsLogo {
+  height: 100%;
+  width: 200px;
+  font-size: large;
+  font-weight: bold;
+  color: white;
+  padding-left: 24px;
+  background-color: #FFAA00;
+}

@@ -1,0 +1,13 @@
+.menu {
+  background-color: #40405C;
+}
+
+.menuItem {
+  background-color: #40405C;
+  margin: 0;
+}
+
+.ant-menu {
+  background-color: #40405C !important;
+  color: white !important;
+}
