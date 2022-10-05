@@ -11,8 +11,6 @@ import {
 
 import './App.css';
 
-// TODO use react router
-// TODO dynamic import
 const PAGES = [{
   key: 'dashboard',
   route: '/dashboard',

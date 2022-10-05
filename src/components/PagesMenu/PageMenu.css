@@ -7,9 +7,16 @@
   margin: 0;
 }
 
+.menuItem:hover {
+  background-color: #2D2D40;
+}
+
+.ant-menu-item-selected:hover {
+  background-color: #2D2D40 !important;
+}
+
 .ant-menu {
   background-color: #40405C !important;
-  color: white !important;
 }
 
 .ant-menu-inline .ant-menu-item {
@@ -17,7 +24,7 @@
 }
 .ant-menu-item-selected {
   color: inherit;
-  background-color: inherit;
+  background-color: #2D2D40;
 }
 
 menu-item::after {
